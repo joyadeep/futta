@@ -6,6 +6,7 @@ import RequestCall from './pages/RequestCall'
 import Services from './pages/Services'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import VehicleSlider from './pages/VehicleSlider'
 
 
 
@@ -17,8 +18,13 @@ function App() {
    <Landing/>
    <About/>
    <Services/>
+   <VehicleSlider/>
    <RequestCall/>
    <Footer/>
+
+
+
+
    <ToastContainer
    position="top-right"
    autoClose={3000}

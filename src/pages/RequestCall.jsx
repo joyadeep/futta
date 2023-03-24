@@ -20,7 +20,7 @@ const RequestCall = () => {
                 <input type="text" name="name" value={data.name} onChange={handleChange} placeholder='Name' className=' rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-14' />
                 <input type="text" name='email' value={data.email} onChange={handleChange}  placeholder='Email' className=' rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-14' />
                 <input type="text" name='phone' value={data.phone} onChange={handleChange} placeholder='Phone Number' className=' rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-14' />
-                <textarea rows="5" name='message' value={data.message} onChange={handleChange}   placeholder='Message' className=' resize-none rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-14' />
+                <textarea rows="5" name='message' value={data.message} onChange={handleChange}   placeholder='Message' className=' resize-none rounded-md text-xl w-full border border-orange-500 outline-none pl-5 pt-3' />
                 <button type="submit" className='rounded-full text-white text-lg font-semibold bg-orange-500 w-fit mx-auto px-10 py-3'>SEND</button>
             </form>
             <img src={van} className="w-3/5 object-contain pl-5" />
