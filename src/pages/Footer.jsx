@@ -16,14 +16,14 @@ const Footer = () => {
                 <div className=' pb-5'>
                 <p className='font-medium text-2xl pb-4'>Newsletter</p>
                 <div className='flex'>
-                    <input type="email" placeholder="Enter your email"  className='text-xl h-10 pl-3 rounded-l-md active:border-0'/>
+                    <input type="email" placeholder="Enter your email"  className='text-xl h-12 outline-none pl-3 rounded-l-md active:border-0'/>
                     <button type='submit' className='bg-orange-500 text-white px-3 font-medium rounded-r-md text-lg '>subscribe</button>
                 </div>
                 </div>
             </div>
             <img src={map} className="w-7/12 object-contain " alt="" />
         </div>
-        <div className='bg-blue-600 h-20 flex items-center justify-center '>
+        <div className='bg-orange-400 h-20 flex items-center justify-center '>
             <p className='text-white text-xl '>© 2023-Futta OY All Rights Reserved</p>
         </div>
     </div>
