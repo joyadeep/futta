@@ -1,8 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
+import van from '../assets/images/futtavan.png'
+import {Swiper,SwiperSlide} from 'swiper/react'
+import { Autoplay } from "swiper";
+import 'swiper/css';
+import LandingSlide from '../components/LandingSlide';
+import VehicleSliderButtons from '../components/VehicleSliderButtons';
+import LandingSliderButtons from '../components/LandingSliderButtons';
+
 
 const Landing = () => {
   return (
-    <div>Landing</div>
+   <div className=' h-screen w-full'>
+   <Swiper
+    modules={[Autoplay]}
+    spaceBetween={50}
+    slidesPerView={1}
+    loop
+    autoplay={
+     { delay: 2500,
+      disableOnInteraction: false,pauseOnMouseEnter:true}
+    }>
+   {
+    [1,2,3].map((index)=>(
+      <SwiperSlide key={index}>
+      <LandingSlide />
+    </SwiperSlide>
+    ))
+   }
+  <LandingSliderButtons/>
+   </Swiper>
+   </div>
   )
 }
 

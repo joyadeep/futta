@@ -14,7 +14,7 @@ const RequestCall = () => {
     }
   return (
     <div className='h-screen w-full px-10 pt-5'>
-        <p className='capitalize text-6xl font-bold text-orange-500'>Request a call for you</p>
+        <p className='capitalize text-6xl font-bold text-orange-400'>Request a call for you</p>
         <div className='flex justify-center pt-10'>
             <form onSubmit={handleSubmit} className='w-2/5 pl-4 flex flex-col gap-5'>
                 <input type="text" name="name" value={data.name} onChange={handleChange} placeholder='Name' className=' rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-14' />

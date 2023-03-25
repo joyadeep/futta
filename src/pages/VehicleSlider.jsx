@@ -22,8 +22,8 @@ const VehicleSlider = () => {
       }
     >
      {
-        [1,2,3].map(()=>(
-            <SwiperSlide>
+        [1,2,3].map((index)=>(
+            <SwiperSlide key={index}>
                 <VehicleSlide/>
             </SwiperSlide>
         ))

@@ -42,12 +42,12 @@ const data=[
 const Services = () => {
   return (
     <div className='h-screen w-full bg-gray-100 flex flex-col items-center justify-center gap-3 px-10'>
-        <p className='text-orange-500 text-6xl font-bold'>Our Services</p>
+        <p className='text-orange-400 text-6xl font-bold'>Our Services</p>
         <p className='text-lg font-medium text-center mx-5'>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, There</p>
         <div className='flex justify-between w-full'>
             {
                 data.map((item)=>(
-                    <ServiceCard title={item.title} image={item.image} color={item.bgColor} />
+                    <ServiceCard key={item.id} title={item.title} image={item.image} color={item.bgColor} />
                 ))
             }
         </div>
