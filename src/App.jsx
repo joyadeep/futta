@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import AdminLayout from './layout/AdminLayout';
 import Dashbaord from './pages/Dashbaord';
 import Driver from './pages/Driver';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
    <Routes>
     <Route path='/' element={<Customer/>} />
     <Route path='/login' element={<Login/>} />
-    <Route path='/' element={<AdminLayout/>}>
+    <Route element={<ProtectedRoute/>}>
       <Route path="/dashboard" element={<Dashbaord/>} />
       <Route path="/driver" element={<Driver/>} />
     </Route>

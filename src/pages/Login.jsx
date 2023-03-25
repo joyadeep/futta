@@ -1,14 +1,28 @@
 import React, { useState } from 'react'
 import futta from '../assets/images/futta.png'
+import { login } from '../helper/adminHelper'
+import {toast} from 'react-toastify'
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
+    const navigate=useNavigate()
     const [data,setData]=useState({email:'',password:''})
     const handleChange=(e)=>{
         setData({...data,[e.target.name]:e.target.value})
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log("user login ",data)
+        login(data).then((res)=>{
+          if(res.status===203)
+          toast.error(res.data.message)
+          else if(res.status===200){
+            localStorage.setItem("token",res.data.token)
+            localStorage.setItem("name",res.data.name)
+            navigate("/dashboard")
+          }
+        }).catch((error)=>{
+          console.log("error",error)
+        }).finally(()=>{})
     }
   return (
     <div className='h-screen w-full flex items-center justify-center'>
