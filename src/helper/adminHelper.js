@@ -33,4 +33,22 @@ const getCompletedRequests=async()=>{
     }
 }
 
-export {login,getNewRequests,getCompletedRequests}
+const getNewTransportQuotes=async()=>{
+    try {
+        const result=await instance.get("showAllNewTransportQuote",config);
+        return result;
+    } catch (error) {
+        console.log("error",error)
+    }
+}
+
+const getCompletedTransportQuotes=async()=>{
+    try {
+        const result=await instance.get("showAllCompletedTransportQuote",config);
+        return result;
+    } catch (error) {
+        console.log("error",error)
+    }
+}
+
+export {login,getNewRequests,getCompletedRequests,getNewTransportQuotes,getCompletedTransportQuotes}

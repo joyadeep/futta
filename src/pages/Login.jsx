@@ -28,8 +28,8 @@ const Login = () => {
         }).finally(()=>{})
     }
   return (
-    <div className='h-screen w-full flex items-center justify-center'>
-        <form onSubmit={handleSubmit} className='w-11/12 sm:w-11/12 md:w-1/3 flex flex-col gap-7 shadow-lg px-10 py-5 rounded-lg'>
+    <div className='h-screen w-full bg-slate-50 flex items-center justify-center'>
+        <form onSubmit={handleSubmit} className='w-11/12 bg-white sm:w-11/12 md:w-1/3 flex flex-col gap-7 shadow-lg px-10 py-5 rounded-lg'>
             <div className='-mt-8'>
             <img src={futta} className='w-32 object-contain mx-auto' />
             <p className='text-center text-2xl font-medium  tracking-tighter -mt-5 text-slate-700'>SignIn</p>

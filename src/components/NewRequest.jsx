@@ -17,13 +17,12 @@ const NewRequest = () => {
     })
   },[])
   return (
-    <div className=''>
-      <table className=' w-full rounded-lg overflow-hidden shadow-md'>
+      <table className=' w-full rounded-lg overflow-hidden shadow-md overflow-y-auto'>
         <thead >
           <tr className='text-md py-2 text-left bg-slate-300 h-10'>
             <th className='pl-2'>#</th>
             <th className='px-5 sm:px-5 md:px-0'>Name</th>
-            <th className='px-5 sm:px-5 md:px-0'>Phone Number</th>
+            <th className='px-5 sm:px-5 md:px-0 whitespace-nowrap '>Phone Number</th>
             <th className='px-5 sm:px-5 md:px-0'>Email</th>
             <th className='px-5 sm:px-5 md:px-0'>Message</th>
             <th className='px-5 sm:px-5 md:px-0'>Status</th>
@@ -50,7 +49,6 @@ const NewRequest = () => {
          }
         </tbody>
       </table>
-    </div>
   )
 }
 

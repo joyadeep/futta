@@ -7,6 +7,7 @@ import AdminLayout from './layout/AdminLayout';
 import Dashbaord from './pages/Dashbaord';
 import Driver from './pages/Driver';
 import ProtectedRoute from './components/ProtectedRoute';
+import TransportQuote from './pages/TransportQuote';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <Route element={<ProtectedRoute/>}>
       <Route path="/dashboard" element={<Dashbaord/>} />
       <Route path="/driver" element={<Driver/>} />
+      <Route path='/quote' element={<TransportQuote/>} />
     </Route>
    </Routes>
    <ToastContainer

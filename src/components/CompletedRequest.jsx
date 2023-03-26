@@ -11,13 +11,12 @@ const CompletedRequest = () => {
   useEffect(()=>{
     getCompletedRequests().then((res)=>{
       if(res.status===200){
-        console.log("res==",res)
         dispatch(getCompletedRequest(res.data.data))
       }
     })
   },[dispatch])
   return (
-    <div className=''>
+    <div className='overflow-y-auto'>
     <table className=' w-full rounded-lg overflow-hidden shadow-md'>
       <thead >
         <tr className='text-md py-2 text-left bg-slate-300 h-10'>

@@ -31,6 +31,16 @@ const ProtectedRoute = ({redirectPath="/"}) => {
         Home
       </NavLink>
       <NavLink
+        to="/quote"
+        className={({ isActive }) =>
+          isActive
+            ? "bg-orange-300 rounded-md pl-4 text-xl py-1"
+            : " rounded-md pl-4 text-xl py-1"
+        }
+      >
+        Transport Quote
+      </NavLink>
+      <NavLink
         to="/driver"
         className={({ isActive }) =>
           isActive
@@ -52,11 +62,13 @@ const ProtectedRoute = ({redirectPath="/"}) => {
       </NavLink>
       <button onClick={handleLogout} className=" rounded-md  text-xl text-left pl-4 py-1 text-red-500 hover:bg-red-100">Logout</button>
     </div>
-    <div className="w-1/2 sm:w-1/2 md:w-10/12 px-2 flex-grow">
+    <div className="w-1/2 h-9/12  pb-20 overflow-hidden sm:w-1/2 md:w-10/12 px-2 flex-grow">
       <div className=" pt-1">
-        <FiMenu onClick={handleToggle} className="cursor-pointer text-5xl sm:text-5xl md:text-3xl" />
+        <FiMenu onClick={handleToggle} className="cursor-pointer text-4xl" />
       </div>
+      <div className='h-full overflow-y-auto'>
         <Outlet/>
+      </div>
     </div>
   </div>
   }
