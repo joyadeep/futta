@@ -8,7 +8,7 @@ import VehicleSliderButtons from '../components/VehicleSliderButtons';
 
 const VehicleSlider = () => {
   return (
-    <div className='h-screen w-full px-10 py-10'>
+    <div className=' h-fit sm:h-fit md:h-screen w-full px-5 sm:px-5 md:px-10 py-10'>
         <p className='text-6xl font-bold text-orange-400 text-center mb-10'>Our Vehicles</p>
 
         <Swiper

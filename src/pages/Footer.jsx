@@ -16,7 +16,7 @@ const Footer = () => {
                 <div className=' pb-5'>
                 <p className='font-medium text-2xl pb-4'>Newsletter</p>
                 <div className='flex'>
-                    <input type="email" placeholder="Enter your email"  className='text-xl h-12 outline-none pl-3 rounded-l-md active:border-0'/>
+                    <input type="email" placeholder="Enter your email"  className='border border-white text-xl h-12 outline-none pl-3 rounded-l-md active:border-0'/>
                     <button type='submit' className='bg-orange-500 text-white px-3 font-medium rounded-r-md text-lg '>subscribe</button>
                 </div>
                 </div>

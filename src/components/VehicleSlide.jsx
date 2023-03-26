@@ -4,7 +4,7 @@ import VehicleCard from './VehicleCard'
 const VehicleSlide = () => {
   return (
     <div className=' h-fit'>
-       <div className='flex justify-between gap-7 mb-5'>
+       <div className='flex flex-col sm:flex-col md:flex-row justify-between gap-7 mb-5'>
        <VehicleCard/>
         <VehicleCard/>
         <VehicleCard/>

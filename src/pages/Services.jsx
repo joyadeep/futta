@@ -41,10 +41,10 @@ const data=[
 
 const Services = () => {
   return (
-    <div className='h-screen w-full bg-gray-100 flex flex-col items-center justify-center gap-3 px-10'>
+    <div className='h-fit sm:h-fit md:h-screen py-3 sm:py-3 md:py-0 w-full bg-gray-100 flex flex-col items-center justify-evenly sm:justify-evenly md:justify-center gap-3 px-2 sm:px-2 md:px-10'>
         <p className='text-orange-400 text-6xl font-bold'>Our Services</p>
         <p className='text-lg font-medium text-center mx-5'>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, There</p>
-        <div className='flex justify-between w-full'>
+        <div className='flex flex-col sm:flex-col gap-10 sm:gap-10 md:gap-0 md:flex-row justify-between w-full'>
             {
                 data.map((item)=>(
                     <ServiceCard key={item.id} title={item.title} image={item.image} color={item.bgColor} />
