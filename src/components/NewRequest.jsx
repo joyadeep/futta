@@ -3,22 +3,29 @@ import { useEffect } from 'react'
 import { getNewRequests,completeRequestCall } from '../helper/adminHelper'
 import { useSelector, useDispatch } from 'react-redux'
 import {completeRequest, getNewRequest} from '../redux/feature/adminSlice'
+import {setLoadingFalse,setLoadingTrue} from '../redux/feature/globalSlice'
 import {toast} from 'react-toastify'
+import Loading from './Loading'
 
 const NewRequest = () => {
   const request= useSelector((state)=>state.admin.newRequest)
+  const isLoading=useSelector((state)=>state.global.isLoading)
   const dispatch=useDispatch()
   useEffect(()=>{
+    dispatch(setLoadingTrue())
     getNewRequests().then((res)=>{
       if(res.status===200){
         dispatch(getNewRequest(res.data.data))
       }
     }).catch((error)=>{
       console.log("error",error)
+    }).finally(()=>{
+      dispatch(setLoadingFalse())
     })
   },[])
 
   const handleComplete=(id)=>{
+    dispatch(setLoadingTrue())
     completeRequestCall(id).then((res)=>{
       if(res.status===200){
         dispatch(completeRequest(res.data.data))
@@ -26,12 +33,14 @@ const NewRequest = () => {
       }
     }).catch((error)=>{console.log("error",error)})
     .finally(()=>{
-    
+    dispatch(setLoadingFalse())
     })
   }
 
   return (
-      <table className=' w-full rounded-lg overflow-hidden shadow-md overflow-y-auto'>
+      <>
+      {
+        isLoading ? <Loading/> : <table className=' w-full rounded-lg overflow-hidden shadow-md overflow-y-auto'>
         <thead >
           <tr className='text-md py-2 text-left bg-slate-300 h-10'>
             <th className='pl-2'>#</th>
@@ -65,6 +74,8 @@ const NewRequest = () => {
          }
         </tbody>
       </table>
+      }
+      </>
   )
 }
 

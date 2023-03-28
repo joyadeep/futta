@@ -9,11 +9,11 @@ const Reservation = () => {
     const [activeTab,setActiveTab]=useState("1")
   return (
     <div className='mt-5 h-full w-full ' >
-    <div className='flex overflow-x-auto no-scrollbar'>
-     <button onClick={()=>{setActiveTab("1")}}  className={activeTab==="1"?"bg-orange-300 whitespace-nowrap text-white px-6 rounded-md py-2":" hover:bg-orange-100 whitespace-nowrap bg-transparent px-6 rounded-md py-2"}>All Reservation</button>
-     <button onClick={()=>{setActiveTab("2")}} className={activeTab==="2"?"bg-orange-300 whitespace-nowrap text-white px-6 rounded-md py-2":" hover:bg-orange-100 whitespace-nowrap bg-transparent px-6 rounded-md py-2"}>New Reservation</button>
-     <button onClick={()=>{setActiveTab("3")}} className={activeTab==="3"?"bg-orange-300 whitespace-nowrap text-white px-6 rounded-md py-2":"hover:bg-orange-100 whitespace-nowrap bg-transparent px-6 rounded-md py-2"}>Completed</button>
-     <button onClick={()=>{setActiveTab("4")}} className={activeTab==="4"?"bg-orange-300 whitespace-nowrap text-white px-6 rounded-md py-2":"hover:bg-orange-100 whitespace-nowrap bg-transparent px-6 rounded-md py-2"}>My Reservation</button>
+    <div className='flex overflow-x-auto no-scrollbar '>
+     <button onClick={()=>{setActiveTab("1")}}  className={activeTab==="1"?"bg-violet-500 whitespace-nowrap text-white px-6 rounded-md py-2":" hover:bg-violet-200 whitespace-nowrap bg-transparent px-6 rounded-md py-2"}>All Reservation</button>
+     <button onClick={()=>{setActiveTab("2")}} className={activeTab==="2"?" bg-violet-500 whitespace-nowrap text-white px-6 rounded-md py-2":" hover:bg-violet-200 whitespace-nowrap bg-transparent px-6 rounded-md py-2"}>New Reservation</button>
+     <button onClick={()=>{setActiveTab("3")}} className={activeTab==="3"?"bg-violet-500 whitespace-nowrap text-white px-6 rounded-md py-2":"hover:bg-violet-200 whitespace-nowrap bg-transparent px-6 rounded-md py-2"}>Completed</button>
+     <button onClick={()=>{setActiveTab("4")}} className={activeTab==="4"?"bg-violet-500 whitespace-nowrap text-white px-6 rounded-md py-2":"hover:bg-violet-200 whitespace-nowrap bg-transparent px-6 rounded-md py-2"}>My Reservation</button>
     </div>
     <div className='py-5'>
       {activeTab==="1" && <AllReservation/> }

@@ -24,8 +24,8 @@ const ProtectedRoute = ({redirectPath="/"}) => {
         to="/reservation"
         className={({ isActive }) =>
           isActive
-            ? "bg-orange-300 rounded-md pl-4 text-xl py-1"
-            : " rounded-md pl-4 text-xl py-1 hover:bg-orange-100"
+            ? "bg-violet-500 text-white rounded-md pl-4 text-xl py-1"
+            : " rounded-md pl-4 text-xl py-1 hover:bg-violet-200"
         }
       >
         Reservation
@@ -34,8 +34,8 @@ const ProtectedRoute = ({redirectPath="/"}) => {
         to="/quote"
         className={({ isActive }) =>
           isActive
-            ? "bg-orange-300 rounded-md pl-4 text-xl py-1"
-            : " rounded-md pl-4 text-xl py-1 hover:bg-orange-100"
+            ? "bg-violet-500 text-white rounded-md pl-4 text-xl py-1"
+            : " rounded-md pl-4 text-xl py-1 hover:bg-violet-200"
         }
       >
         Transport Quote
@@ -44,21 +44,21 @@ const ProtectedRoute = ({redirectPath="/"}) => {
         to="/requestcall"
         className={({ isActive }) =>
           isActive
-            ? "bg-orange-300 rounded-md pl-4 text-xl py-1"
-            : " rounded-md pl-4 text-xl py-1 hover:bg-orange-100"
+            ? "bg-violet-500 text-white rounded-md pl-4 text-xl py-1"
+            : " rounded-md pl-4 text-xl py-1 hover:bg-violet-200"
         }
       >
         Request Call
       </NavLink>
       <NavLink
-        to="/login"
+        to="/driver"
         className={({ isActive }) =>
           isActive
-            ? "bg-orange-300 rounded-md pl-4 text-xl py-1"
-            : " rounded-md pl-4 text-xl py-1 hover:bg-orange-100"
+            ? "bg-violet-500 text-white rounded-md pl-4 text-xl py-1"
+            : " rounded-md pl-4 text-xl py-1 hover:bg-violet-200"
         }
       >
-        Requests
+        Driver
       </NavLink>
       <button onClick={handleLogout} className=" rounded-md  text-xl text-left pl-4 py-1 text-red-500 hover:bg-red-100">Logout</button>
     </div>

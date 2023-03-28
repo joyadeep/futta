@@ -12,17 +12,23 @@ const LandingSlide = () => {
   const [isLoading,setIsLoading]=useState(false)
   const swiper=useSwiper()
   const [timedate,setTimedate]=useState(new Date());
-    const [data,setData]=useState({service:'',location:'',destination:'',email:'',phone:'',date:''})
+    const [data,setData]=useState({service:'',location:'',destination:'',email:'',phone:'',date:new Date()})
     
     const handleChange=(e)=>{
       swiper.autoplay.stop()
         setData({...data,[e.target.name]:e.target.value})
     }
+    const handleDateChange=(date)=>{
+      setData((preval)=>({
+        ...preval,
+        date
+      }))
+    }
     const handleSubmit=(e)=>{
         e.preventDefault();
         setIsLoading(true)
-        console.log("timedata==",timedate)
         console.log("data ==",data)
+        // onsuccess swipter autoplay start | clear form | toast message
         swiper.autoplay.start()
     }
   return (
@@ -42,7 +48,7 @@ const LandingSlide = () => {
         <p className='w-full sm:w-full md:w-3/4 text-3xl sm:text-3xl md:text-2xl  font-medium'>Get your transport quote</p>
         <form onSubmit={handleSubmit} className='w-full sm:w-full  flex flex-col gap-5 mt-5' >
             <select name="service" value={data.service} onChange={handleChange} placeholder='Select Service' className='text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
-                <option value="" selected >Select Service</option>
+                <option value="" >Select Service</option>
                 <option value="van rental" >Van Rental</option>
                 <option value="trailor" >Trailor</option>
                 <option value="van + trailor" >Van + Trailor</option>
@@ -61,7 +67,7 @@ const LandingSlide = () => {
             <input type="email" name="email" value={data.email} onChange={handleChange} placeholder='Email' className=' text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md' />
             <input type="text" name="phone" value={data.phone} onChange={handleChange} placeholder='Contact Number' className='text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md' />
             {/* <input type="datetime-local" name="date" value={data.date} onChange={handleChange} placeholder='Select Location' className='text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md' /> */}
-            <DateTimePicker autoFocus={false} disableClock={true} className="text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md" value={timedate} onChange={setTimedate} />
+            <DateTimePicker id="date" autoFocus={false} disableClock={true} className="text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md" value={data.date} onChange={handleDateChange} />
             <button disabled={isLoading} className='capitalize text-2xl sm:text-2xl md:text-xl text-white bg-orange-400 w-48 px-3 py-2 rounded-md flex items-center justify-center mx-auto gap-2 disabled:bg-gray-400 '>{isLoading && <CgSpinner size={20} className="animate-spin"/>}get new quote</button>
         </form>
       </div>

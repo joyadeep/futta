@@ -3,14 +3,17 @@ import futta from '../assets/images/futta.png'
 import { login } from '../helper/adminHelper'
 import {toast} from 'react-toastify'
 import {useNavigate} from 'react-router-dom'
+import { CgSpinner } from 'react-icons/cg'
 
 const Login = () => {
     const navigate=useNavigate()
     const [data,setData]=useState({email:'',password:''})
+    const [isLoading,setIsLoading]=useState(false)
     const handleChange=(e)=>{
         setData({...data,[e.target.name]:e.target.value})
     }
     const handleSubmit=(e)=>{
+        setIsLoading(true)
         e.preventDefault();
         login(data).then((res)=>{
           if(res.status===203)
@@ -18,14 +21,14 @@ const Login = () => {
           else if(res.status===200){
             localStorage.setItem("token",res.data.token)
             localStorage.setItem("name",res.data.name)
-            navigate("/dashboard")
+            navigate("/reservation")
           }
           else{
             toast.error(res.data.error)
           }
         }).catch((error)=>{
           console.log("error",error)
-        }).finally(()=>{})
+        }).finally(()=>{setIsLoading(false)})
     }
   return (
     <div className='h-screen w-full bg-slate-50 flex items-center justify-center'>
@@ -44,7 +47,7 @@ const Login = () => {
             <input type="password" name='password' value={data.password} onChange={handleChange} className='w-full text-lg outline-none border border-orange-400 rounded-md h-11 pl-4'  />
             <p className='text-sm h-4 text-red-500'></p>
            </div>
-           <button type='submit' disabled={!data.email || !data.password} className='bg-orange-400 text-white text-xl w-full  rounded-md mx-auto px-4 py-2 disabled:bg-orange-300 '>Login</button>
+           <button type='submit' disabled={!data.email || !data.password || isLoading} className='bg-orange-400 text-white text-xl w-full  rounded-md mx-auto px-4 py-2 flex items-center justify-center gap-2 disabled:bg-gray-400 '>{isLoading && <CgSpinner size={20} className="animate-spin" />} Login</button>
         </form>
     </div>
   )

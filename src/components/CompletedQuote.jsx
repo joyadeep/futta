@@ -1,24 +1,32 @@
 import React from 'react'
 import {useDispatch,useSelector} from 'react-redux';
 import {getCompletedQuote} from '../redux/feature/adminSlice'
+import {setLoadingFalse,setLoadingTrue} from '../redux/feature/globalSlice'
 import {getCompletedTransportQuotes} from '../helper/adminHelper'
 import { useEffect } from 'react';
+import Loading from './Loading';
 
 const CompletedQuote = () => {
   const completedQuotes=useSelector((state)=>state.admin.completedTransprtQuote);
+  const isLoading=useSelector((state)=>state.global.isLoading)
   const dispatch=useDispatch()
 
   useEffect(()=>{
+    dispatch(setLoadingTrue())
     getCompletedTransportQuotes().then((res)=>{
       if(res.status===200){
         dispatch(getCompletedQuote(res.data.data))
       }
     }).catch((error)=>{
       console.log("error",error)
+    }).finally(()=>{
+      dispatch(setLoadingFalse())
     })
   },[])
   return (
-    <table className=' w-full rounded-lg overflow-hidden shadow-md'>
+   <>
+   {
+    isLoading ? <Loading/> :  <table className=' w-full rounded-lg overflow-hidden shadow-md'>
     <thead >
     <tr className='text-md py-2 text-left bg-slate-300 h-10'>
         <th className='pl-2'>#</th>
@@ -48,6 +56,8 @@ const CompletedQuote = () => {
      }
     </tbody>
   </table>
+   }
+   </>
   )
 }
 

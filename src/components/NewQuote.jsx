@@ -1,24 +1,29 @@
 import React from 'react'
 import {useSelector,useDispatch} from 'react-redux';
 import {getNewQuote,completeQuote} from '../redux/feature/adminSlice'
+import {setLoadingFalse,setLoadingTrue} from '../redux/feature/globalSlice'
 import {getNewTransportQuotes,completedQuoteRequest} from '../helper/adminHelper'
 import { useEffect } from 'react';
 import {toast} from 'react-toastify'
+import Loading from './Loading';
 
 const NewQuote = () => {
   const dispatch=useDispatch();
   const newQuotes=useSelector((state)=>state.admin.newTransportQuote)
+  const isLoading=useSelector((state)=>state.global.isLoading)
   useEffect(()=>{
+    dispatch(setLoadingTrue())
     getNewTransportQuotes().then((res)=>{
       if(res.status===200){
         dispatch(getNewQuote(res.data.data))
       }
     }).catch((error)=>{
       console.log("error",error)
-    })
+    }).finally(()=>{dispatch(setLoadingFalse())})
   },[])
 
   const handleComplete=(id)=>{
+    dispatch(setLoadingTrue())
     completedQuoteRequest(id).then((res)=>{
       if(res.status===200){
         dispatch(completeQuote(res.data.data))
@@ -26,12 +31,13 @@ const NewQuote = () => {
       }
     }).catch((error)=>{console.log("error",error)})
     .finally(()=>{
-    
+    dispatch(setLoadingFalse())
     })
   }
 
   return (
-    <table className=' w-full rounded-lg overflow-hidden shadow-md'>
+   <>
+   {isLoading ? <Loading/> :  <table className=' w-full rounded-lg overflow-hidden shadow-md'>
     <thead >
       <tr className='text-md py-2 text-left bg-slate-300 h-10'>
         <th className='pl-2'>#</th>
@@ -66,7 +72,8 @@ const NewQuote = () => {
       ))
      }
     </tbody>
-  </table>
+  </table>}
+   </>
   )
 }
 

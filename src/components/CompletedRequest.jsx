@@ -2,22 +2,31 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {getCompletedRequest} from '../redux/feature/adminSlice'
+import {setLoadingFalse,setLoadingTrue} from '../redux/feature/globalSlice'
 import {getCompletedRequests} from '../helper/adminHelper'
+import Loading from './Loading'
 
 const CompletedRequest = () => {
   const completed=useSelector((state)=>state.admin.completedRequest)
+  const isLoading=useSelector((state)=>state.global.isLoading);
   const dispatch=useDispatch()
 
   useEffect(()=>{
+    dispatch(setLoadingTrue())
     getCompletedRequests().then((res)=>{
       if(res.status===200){
         dispatch(getCompletedRequest(res.data.data))
       }
-    })
+    }).catch((error)=>{console.log("error",error)})
+    .finally(()=>{dispatch(setLoadingFalse())})
   },[dispatch])
   return (
     <div className='overflow-y-auto'>
-    <table className=' w-full rounded-lg overflow-hidden shadow-md'>
+      {
+        console.log("loading",isLoading)
+      }
+    {
+      isLoading? <Loading/> :<table className='w-full rounded-lg overflow-hidden shadow-md'>
       <thead >
         <tr className='text-md py-2 text-left bg-slate-300 h-10'>
           <th className='pl-2'>#</th>
@@ -29,9 +38,6 @@ const CompletedRequest = () => {
         </tr>
       </thead>
       <tbody>
-        {
-          console.log("data==",completed)
-        }
        {
         
         completed?.map((item)=>(
@@ -49,6 +55,7 @@ const CompletedRequest = () => {
        }
       </tbody>
     </table>
+    }
   </div>
   )
 }
