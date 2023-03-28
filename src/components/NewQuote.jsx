@@ -1,8 +1,9 @@
 import React from 'react'
 import {useSelector,useDispatch} from 'react-redux';
-import {getNewQuote} from '../redux/feature/adminSlice'
-import {getNewTransportQuotes} from '../helper/adminHelper'
+import {getNewQuote,completeQuote} from '../redux/feature/adminSlice'
+import {getNewTransportQuotes,completedQuoteRequest} from '../helper/adminHelper'
 import { useEffect } from 'react';
+import {toast} from 'react-toastify'
 
 const NewQuote = () => {
   const dispatch=useDispatch();
@@ -16,6 +17,19 @@ const NewQuote = () => {
       console.log("error",error)
     })
   },[])
+
+  const handleComplete=(id)=>{
+    completedQuoteRequest(id).then((res)=>{
+      if(res.status===200){
+        dispatch(completeQuote(res.data.data))
+        toast.success("Quote completed !")
+      }
+    }).catch((error)=>{console.log("error",error)})
+    .finally(()=>{
+    
+    })
+  }
+
   return (
     <table className=' w-full rounded-lg overflow-hidden shadow-md'>
     <thead >
@@ -33,7 +47,7 @@ const NewQuote = () => {
     <tbody>
      {
       newQuotes?.map((item)=>(
-        <tr key={item.id} className='text-left h-10'>
+        <tr key={item.id} className='text-left h-12'>
         <th className='pl-2'>{item.id}</th>
         <td className='px-5 sm:px-5 md:p-0'>{item.contact_number}</td>
         <td className='px-5 sm:px-5 md:p-0'>{item.email}</td>
@@ -41,11 +55,11 @@ const NewQuote = () => {
         <td className='px-5 sm:px-5 md:p-0 whitespace-nowrap'>{item.book_date}</td>
         <td className='px-5 sm:px-5 md:p-0'>{item.destination}</td>
         <td className='px-5 sm:px-5 md:p-0'>
-          <div className={` text-center w-fit px-2 font-medium rounded-lg text-sm ${item.status==="new" && "bg-purple-200 text-purple-500 "}`} >{item.status}</div>
+          <small className={` text-center w-fit px-2 font-medium rounded-lg text-xs ${item.status==="new" && "bg-purple-200 text-purple-500 "}`} >{item.status}</small>
         </td>
         <td className='px-5 sm:px-5 md:px-0'>
           <div>
-            <button className='bg-green-500 text-sm font-medium py-1 px-2 rounded-md text-white '>complete</button>
+            <button onClick={()=>{handleComplete(item.id)}} className='bg-green-500 text-sm font-medium py-1 px-2 rounded-md text-white '>complete</button>
           </div>
         </td>
       </tr>

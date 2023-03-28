@@ -1,16 +1,26 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import van from '../assets/images/futtavan.png'
-
+import { requestCall } from '../helper/customerHelper'
+import {CgSpinner} from 'react-icons/cg'
 const RequestCall = () => {
-    const [data,setData]=useState({name:'',email:'',phone:'',message:''})
+    const [data,setData]=useState({name:'',email:'',phone_number:'',message:''})
+    const [isLoading,setIsLoading]=useState(false)
     const handleChange=(e)=>{
         setData({...data,[e.target.name]:e.target.value})
     }
     const handleSubmit=(e)=>{
+        setIsLoading(true)
         e.preventDefault();
-        toast.success("clicked")
-        console.log("data=",data)
+        requestCall(data).then((res)=>{
+            if(res.status===200){
+                toast.success("Request call created !")
+            }
+        }).catch((error)=>{
+            toast.error("something went wrong !")
+        }).finally(()=>{
+            setIsLoading(false)
+        })
     }
   return (
     <div className='h-screen w-full px-10 pt-5'>
@@ -19,9 +29,12 @@ const RequestCall = () => {
             <form onSubmit={handleSubmit} className='w-full sm:full md:w-2/5 flex flex-col gap-5'>
                 <input type="text" name="name" value={data.name} onChange={handleChange} placeholder='Name' className=' rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-14' />
                 <input type="text" name='email' value={data.email} onChange={handleChange}  placeholder='Email' className=' rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-14' />
-                <input type="text" name='phone' value={data.phone} onChange={handleChange} placeholder='Phone Number' className=' rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-14' />
+                <input type="text" name='phone_number' value={data.phone_number} onChange={handleChange} placeholder='Phone Number' className=' rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-14' />
                 <textarea rows="5" name='message' value={data.message} onChange={handleChange}   placeholder='Message' className=' resize-none rounded-md text-xl w-full border border-orange-500 outline-none pl-5 pt-3' />
-                <button type="submit" className='rounded-full text-white text-lg font-semibold bg-orange-500 w-fit mx-auto px-10 py-3'>SEND</button>
+                <button disabled={isLoading} type="submit" className='rounded-full text-white text-lg font-semibold bg-orange-500 w-32  mx-auto py-3 flex gap-2 justify-center items-center'>
+                    {isLoading && <CgSpinner size={24} className='animate-spin '/>}
+                    SEND
+                </button>
             </form>
             <img src={van} className="hidden sm:hidden md:block w-3/5 object-contain pl-5" />
         </div>

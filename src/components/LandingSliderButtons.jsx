@@ -5,7 +5,7 @@ import { useSwiper } from 'swiper/react'
 const LandingSliderButtons = () => {
     const swiper=useSwiper()
   return (
-    <div className='hidden sm:hidden md:flex absolute top-1/3 right-1  flex-col gap-3'>
+    <div className='hidden sm:hidden md:flex absolute top-1/3 right-1 z-50  flex-col gap-3'>
     <div onClick={()=>{swiper.slidePrev()}} className='bg-gray-300 p-1 rounded-xl cursor-pointer'>
     <BsChevronLeft size={32}/>
     </div>

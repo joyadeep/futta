@@ -21,41 +21,41 @@ const ProtectedRoute = ({redirectPath="/"}) => {
     <div className={`${menu} w-1/2 sm:w-1/2 md:w-2/12 bg-slate-100 flex flex-col px-2 gap-1`}>
       <p className="text-3xl font-semibold mb-5">Admin</p>
       <NavLink
-        to="/dashboard"
+        to="/reservation"
         className={({ isActive }) =>
           isActive
             ? "bg-orange-300 rounded-md pl-4 text-xl py-1"
-            : " rounded-md pl-4 text-xl py-1"
+            : " rounded-md pl-4 text-xl py-1 hover:bg-orange-100"
         }
       >
-        Home
+        Reservation
       </NavLink>
       <NavLink
         to="/quote"
         className={({ isActive }) =>
           isActive
             ? "bg-orange-300 rounded-md pl-4 text-xl py-1"
-            : " rounded-md pl-4 text-xl py-1"
+            : " rounded-md pl-4 text-xl py-1 hover:bg-orange-100"
         }
       >
         Transport Quote
       </NavLink>
       <NavLink
-        to="/driver"
+        to="/requestcall"
         className={({ isActive }) =>
           isActive
             ? "bg-orange-300 rounded-md pl-4 text-xl py-1"
-            : " rounded-md pl-4 text-xl py-1"
+            : " rounded-md pl-4 text-xl py-1 hover:bg-orange-100"
         }
       >
-        Drivers
+        Request Call
       </NavLink>
       <NavLink
         to="/login"
         className={({ isActive }) =>
           isActive
             ? "bg-orange-300 rounded-md pl-4 text-xl py-1"
-            : " rounded-md pl-4 text-xl py-1"
+            : " rounded-md pl-4 text-xl py-1 hover:bg-orange-100"
         }
       >
         Requests

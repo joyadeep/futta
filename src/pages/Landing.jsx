@@ -17,8 +17,7 @@ const Landing = () => {
     slidesPerView={1}
     loop
     autoplay={
-     { delay: 2500,
-      disableOnInteraction: false,pauseOnMouseEnter:true}
+     { delay: 2500}
     }>
    {
     [1,2,3].map((index)=>(
