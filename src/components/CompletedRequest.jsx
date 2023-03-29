@@ -22,9 +22,7 @@ const CompletedRequest = () => {
   },[dispatch])
   return (
     <div className='overflow-y-auto'>
-      {
-        console.log("loading",isLoading)
-      }
+    
     {
       isLoading? <Loading/> :<table className='w-full rounded-lg overflow-hidden shadow-md'>
       <thead >

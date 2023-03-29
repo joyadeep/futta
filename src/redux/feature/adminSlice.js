@@ -4,7 +4,8 @@ const initialState = {
   newRequest:[],
   completedRequest:[],
   newTransportQuote:[],
-  completedTransprtQuote:[]
+  completedTransprtQuote:[],
+  newDriver:[]
 }
 
 export const adminSlice = createSlice({
@@ -32,11 +33,14 @@ export const adminSlice = createSlice({
       const final=state.newTransportQuote.filter(item=>item.id!==action.payload.id);
       state.newTransportQuote=final
       state.completedTransprtQuote=[...state.newTransportQuote,action.payload]
+    },
+    getNewDriver:(state,action)=>{
+      state.newDriver=action.payload
     }
 
   }
 
 })
 
-export const {getNewRequest,getCompletedRequest,completeRequest,getNewQuote,getCompletedQuote,completeQuote}= adminSlice.actions;
+export const {getNewRequest,getCompletedRequest,completeRequest,getNewQuote,getCompletedQuote,completeQuote,getNewDriver}= adminSlice.actions;
 export default adminSlice.reducer

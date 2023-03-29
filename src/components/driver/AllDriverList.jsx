@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import Loading from '../Loading'
+import {setLoadingFalse,setLoadingTrue} from '../../redux/feature/globalSlice'
+import {getNewDriver} from '../../redux/feature/adminSlice'
+import { fetchNewDriver } from '../../helper/adminHelper'
 
 const AllDriverList = () => {
     const isLoading=useSelector((state)=>state.global.isLoading)
+    const newDriver=useSelector((state)=>state.admin.newDriver)
+    const dispatch=useDispatch()
+
+    useEffect(()=>{
+      dispatch(setLoadingTrue())
+      fetchNewDriver().then((res)=>{
+        if (res.status===200){
+          dispatch(getNewDriver(res.data.data))
+        }
+      }).catch((error)=>{
+        console.log("error",error)
+      }).finally(()=>{
+        dispatch(setLoadingFalse())
+      })
+
+    },[dispatch])
   return (
     <>
     {
@@ -20,32 +39,25 @@ const AllDriverList = () => {
         </tr>
       </thead>
       <tbody>
-        {
-          [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map(()=>(
-            <tr className='h-12'>
-              <td>1</td>
-            </tr>
-          ))
-        }
-       {/* {
-        request?.map((item,index)=>(
+       {
+        newDriver?.map((item,index)=>(
           <tr key={item.id} className='text-left h-10'>
           <th className='pl-2'>{index+1}</th>
           <td className='px-5 sm:px-5 md:px-0 whitespace-nowrap'>{item.name}</td>
-          <td className='px-5 sm:px-5 md:px-0'>{item.phone_number}</td>
+          <td className='px-5 sm:px-5 md:px-0'>{item.mobile}</td>
           <td className='px-5 sm:px-5 md:px-0'>{item.email}</td>
-          <td className='px-5 sm:px-5 md:px-0'>{item.message}</td>
+          <td className='px-5 sm:px-5 md:px-0'>{item.license_number}</td>
           <td className='px-5 sm:px-5 md:px-0'>
-          <div className={`text-center w-fit px-2 font-medium rounded-lg text-xs ${item.status==="new" && "bg-purple-200 text-purple-500 "}`} >{item.status}</div>
+            Image
           </td>
           <td className='px-5 sm:px-5 md:px-0'>
             <div>
-              <button onClick={()=>{handleComplete(item.id)}} className='bg-green-500 text-sm font-medium py-1 px-2 rounded-md text-white '>complete</button>
+              <button className='bg-green-500 text-sm font-medium py-1 px-2 rounded-md text-white '>details</button>
             </div>
           </td>
         </tr>
         ))
-       } */}
+       }
       </tbody>
     </table>
     }

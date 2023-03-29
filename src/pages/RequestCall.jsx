@@ -36,7 +36,7 @@ const RequestCall = () => {
       });
   };
   return (
-    <div className="h-screen w-full px-10 pt-5">
+    <div className="h-fit w-full px-10 py-5">
       <p className="capitalize text-6xl font-bold text-orange-400">
         Request a call for you
       </p>

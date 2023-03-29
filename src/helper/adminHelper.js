@@ -76,4 +76,13 @@ const completedQuoteRequest=async(id)=>{
     }
 }
 
-export {login,getNewRequests,getCompletedRequests,getNewTransportQuotes,getCompletedTransportQuotes,completeRequestCall,completedQuoteRequest}
+const fetchNewDriver=async()=>{
+    try {
+        const result=await axiosInstance.get("showAllDriver");
+        return result
+    } catch (error) {
+        console.log("error",error)
+    }
+}
+
+export {login,getNewRequests,getCompletedRequests,getNewTransportQuotes,getCompletedTransportQuotes,completeRequestCall,completedQuoteRequest,fetchNewDriver}
