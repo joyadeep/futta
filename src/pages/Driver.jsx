@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import AllDriverList from '../components/driver/AllDriverList'
 import PendingDriver from '../components/driver/PendingDriver'
-import Modal from '../components/Modal'
+import CreateDriver from '../components/CreateDriver'
 const Driver = () => {
   const [activeTab,setActiveTab]=useState('1')
   const [isOpen,setIsOpen]=useState(false)
   return (
     <>
-  { isOpen && <Modal/> }
+  { isOpen && <CreateDriver /> }
 
     <div className='mt-5 h-full w-full static ' >
         <button onClick={()=>{setIsOpen(true)}} className='fixed top-1 right-3 bg-green-500 px-4 py-2 rounded-md text-white ml-auto'>Create Driver</button>
