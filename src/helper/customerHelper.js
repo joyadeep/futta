@@ -9,4 +9,15 @@ const requestCall=async(data)=>{
     }
 }
 
-export {requestCall}
+const getQuote=async(data)=>{
+    try {
+        console.log("data befor api =",data)
+        const res=await instance.post("createTransportQuote",data)
+        console.log("response==",res)
+        return res;
+    } catch (error) {
+        console.log("error",error)
+    }
+}
+
+export {requestCall,getQuote}

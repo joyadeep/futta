@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import 'react-responsive-modal/styles.css';
 import Modal from './Modal';
 
 const CreateDriver = () => {
