@@ -36,14 +36,14 @@ const RequestCall = () => {
       });
   };
   return (
-    <div className="h-fit w-full px-10 py-5">
-      <p className="capitalize text-6xl font-bold text-orange-400">
+    <div className="h-fit w-full px-5 sm:px-10 py-5">
+      <p className="capitalize text-5xl sm:text-6xl font-bold text-orange-400">
         Request a call for you
       </p>
       <div className="flex  w-full justify-center pt-10">
         <form
           onSubmit={handleSubmit}
-          className="w-full sm:full md:w-2/5 flex flex-col gap-4"
+          className="w-full sm:full md:w-2/5 flex flex-col gap-3"
         >
           <div className="">
             <input
@@ -52,7 +52,7 @@ const RequestCall = () => {
               value={data.name}
               onChange={handleChange}
               placeholder="Name"
-              className=" rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-14 pb-0 mb-0"
+              className=" rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-10 sm:h-14 pb-0 mb-0"
             />
             <div className=" text-red-500 pl-3 h-3 text-xs w-fit">
               {error?.name}
@@ -65,7 +65,7 @@ const RequestCall = () => {
               value={data.email}
               onChange={handleChange}
               placeholder="Email"
-              className=" rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-14"
+              className=" rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-10 sm:h-14"
             />
             <div className=" text-red-500 pl-3 h-3 text-xs w-fit">
               {error?.email}
@@ -78,7 +78,7 @@ const RequestCall = () => {
               value={data.phone_number}
               onChange={handleChange}
               placeholder="Phone Number"
-              className=" rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-14"
+              className=" rounded-md text-xl w-full border border-orange-500 outline-none pl-5 h-10 sm:h-14"
             />
             <div className=" text-red-500 pl-3 h-3 text-xs w-fit">
               {error?.phone_number}

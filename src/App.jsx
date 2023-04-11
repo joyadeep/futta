@@ -9,9 +9,15 @@ import ProtectedRoute from './components/ProtectedRoute';
 import TransportQuote from './pages/TransportQuote';
 import RequestCallDash from './pages/RequestCallDash';
 import Reservation from './pages/Reservation';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react';
 
 
 function App() {
+  useEffect(()=>{
+    Aos.init({duration:2000,once:true})
+ },[])
  
   return (
    <>

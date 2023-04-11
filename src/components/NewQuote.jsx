@@ -41,6 +41,7 @@ const NewQuote = () => {
     <thead >
       <tr className='text-md py-2 text-left bg-slate-300 h-10'>
         <th className='pl-2'>#</th>
+        <th className='px-5 sm:px-5 md:p-0 whitespace-nowrap '>Service</th>
         <th className='px-5 sm:px-5 md:p-0 whitespace-nowrap '>Phone Number</th>
         <th className='px-5 sm:px-5 md:p-0'>Email</th>
         <th className='px-5 sm:px-5 md:p-0'>Location</th>
@@ -55,6 +56,7 @@ const NewQuote = () => {
       newQuotes?.map((item)=>(
         <tr key={item.id} className='text-left h-12'>
         <th className='pl-2'>{item.id}</th>
+        <td className='px-5 sm:px-5 md:p-0'>{item?.service}</td>
         <td className='px-5 sm:px-5 md:p-0'>{item.contact_number}</td>
         <td className='px-5 sm:px-5 md:p-0'>{item.email}</td>
         <td className='px-5 sm:px-5 md:p-0'>{item.location}</td>

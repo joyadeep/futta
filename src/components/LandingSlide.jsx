@@ -50,7 +50,7 @@ const LandingSlide = () => {
         // onsuccess swipter autoplay start | clear form | toast message
     }
   return (
-    <div className=' h-screen flex flex-col sm:flex-col md:flex-row px-3 sm:px-3 md:px-20'>
+    <div className=' h-fit pb-5 flex flex-col sm:flex-col md:flex-row px-3 sm:px-3 md:px-20'>
       
     <div className=' w-full sm:w-full  md:w-2/5 flex flex-col gap-3 sm:gap-3 md:gap-10'>
         <p className='w-3/4 text-5xl sm:text-5xl md:text-6xl font-bold text-orange-400'>Moving & Vehicle Rentals</p>
@@ -65,7 +65,7 @@ const LandingSlide = () => {
         <p className='text-lg'>Professional Services</p>
         <p className='w-full sm:w-full md:w-3/4 text-3xl sm:text-3xl md:text-2xl  font-medium'>Get your transport quote</p>
         <form onSubmit={handleSubmit} className='w-full sm:w-full  flex flex-col gap-5 mt-5' >
-            <select name="service" value={data.service} onChange={handleChange} placeholder='Select Service' className='text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
+            <select name="service" value={data.service} onChange={handleChange} placeholder='Select Service' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
                 <option value="" >Select Service</option>
                 <option value="van rental" >Van Rental</option>
                 <option value="trailor" >Trailor</option>
@@ -74,7 +74,7 @@ const LandingSlide = () => {
                 <option value="van with driver" >Van with driver</option>
                 <option value="complete moving" >Complete Moving</option>
             </select>
-            <select name="location" value={data.location} onChange={handleChange} placeholder='Select Location' className='text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
+            <select name="location" value={data.location} onChange={handleChange} placeholder='Select Location' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
                 <option value="" >Select Location</option>
                 {
                   location.map((item,index)=>(
@@ -82,7 +82,7 @@ const LandingSlide = () => {
                   ))
                 }
             </select>
-            <select name="destination" value={data.destination} onChange={handleChange} placeholder='Select Destination' className='text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
+            <select name="destination" value={data.destination} onChange={handleChange} placeholder='Select Destination' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
                 <option value="" >Select Destination</option>
                 {
                   location.map((item,index)=>(
@@ -90,11 +90,11 @@ const LandingSlide = () => {
                   ))
                 }
             </select>
-            <input type="email" name="email" value={data.email} onChange={handleChange} placeholder='Email' className=' text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md' />
-            <input type="text" name="contact_number" value={data.contact_number} onChange={handleChange} placeholder='Contact Number' className='text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md' />
+            <input type="email" name="email" value={data.email} onChange={handleChange} placeholder='Email' className=' text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' />
+            <input type="text" name="contact_number" value={data.contact_number} onChange={handleChange} placeholder='Contact Number' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' />
             {/* <input type="datetime-local" name="date" value={data.date} onChange={handleChange} placeholder='Select Location' className='text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md' /> */}
-            <DateTimePicker id="book_date"  format="yyyy-MM-dd hh:mm a" autoFocus={false} disableClock={true} className="text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md" value={data.book_date} onChange={handleDateChange} />
-            <button disabled={isLoading} className='capitalize text-2xl sm:text-2xl md:text-xl text-white bg-orange-400 w-48 px-3 py-2 rounded-md flex items-center justify-center mx-auto gap-2 disabled:bg-gray-400 '>{isLoading && <CgSpinner size={20} className="animate-spin"/>}get new quote</button>
+            <DateTimePicker id="book_date"  format="yyyy-MM-dd hh:mm a" autoFocus={false} disableClock={true} className="text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md" value={data.book_date} onChange={handleDateChange} />
+            <button disabled={isLoading} className='capitalize text-xl sm:text-2xl md:text-xl text-white bg-orange-400 w-48 px-3 py-2 rounded-md flex items-center justify-center mx-auto gap-2 disabled:bg-gray-400 '>{isLoading && <CgSpinner size={20} className="animate-spin"/>}get new quote</button>
         </form>
       </div>
     </div>
