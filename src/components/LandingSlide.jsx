@@ -40,7 +40,7 @@ const LandingSlide = () => {
         const newData={...data,book_date:newDate}
         getQuote(newData).then((res)=>{
           if (res.status===200){
-            setData({service:"",location:'',destination:'',email:'',contact_number:'',book_date:new Date()})
+            setData({services:"",location:'',destination:'',email:'',contact_number:'',book_date:new Date()})
             toast.success("Transport quote created !")
           }
         }).finally(()=>{
@@ -65,7 +65,7 @@ const LandingSlide = () => {
         <p className='text-lg'>Professional Services</p>
         <p className='w-full sm:w-full md:w-3/4 text-3xl sm:text-3xl md:text-2xl  font-medium'>Get your transport quote</p>
         <form onSubmit={handleSubmit} className='w-full sm:w-full  flex flex-col gap-5 mt-5' >
-            <select name="service" value={data.service} onChange={handleChange} placeholder='Select Service' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
+            <select name="services" value={data.service} onChange={handleChange} placeholder='Select Service' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
                 <option value="" >Select Service</option>
                 <option value="van rental" >Van Rental</option>
                 <option value="trailor" >Trailor</option>
