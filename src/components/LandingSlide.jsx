@@ -21,8 +21,8 @@ const LandingSlide = () => {
   const [isLoading,setIsLoading]=useState(false)
   const swiper=useSwiper()
   const [timedate,setTimedate]=useState(new Date());
-    const [data,setData]=useState({location:'',destination:'',email:'',contact_number:'',book_date:new Date()})
-    
+  const [data,setData]=useState({location:'',destination:'',email:'',contact_number:'',book_date:new Date()})
+  const [error,setError]=useState(null);  
     const handleChange=(e)=>{
       swiper.autoplay.stop()
         setData({...data,[e.target.name]:e.target.value})
@@ -42,6 +42,10 @@ const LandingSlide = () => {
           if (res.status===200){
             setData({services:"",location:'',destination:'',email:'',contact_number:'',book_date:new Date()})
             toast.success("Transport quote created !")
+          }
+          else if (res.status===202){
+            console.log("error",res)
+            setError(res.data.error);
           }
         }).finally(()=>{
           setIsLoading(false);
@@ -64,8 +68,9 @@ const LandingSlide = () => {
       <div className='w-full sm:w-full md:w-1/2 pt-5 sm:pt-5 md:pt-0'>
         <p className='text-lg'>Professional Services</p>
         <p className='w-full sm:w-full md:w-3/4 text-3xl sm:text-3xl md:text-2xl  font-medium'>Get your transport quote</p>
-        <form onSubmit={handleSubmit} className='w-full sm:w-full  flex flex-col gap-5 mt-5' >
-            <select name="services" value={data.service} onChange={handleChange} placeholder='Select Service' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
+        <form onSubmit={handleSubmit} className='w-full sm:w-full  flex flex-col gap-2 mt-5' >
+            <div>
+            <select name="services" value={data.service} onChange={handleChange} placeholder='Select Service' className=' text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
                 <option value="" >Select Service</option>
                 <option value="van rental" >Van Rental</option>
                 <option value="trailor" >Trailor</option>
@@ -74,7 +79,10 @@ const LandingSlide = () => {
                 <option value="van with driver" >Van with driver</option>
                 <option value="complete moving" >Complete Moving</option>
             </select>
-            <select name="location" value={data.location} onChange={handleChange} placeholder='Select Location' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
+            <p className='text-red-500 pl-3 h-3 text-xs'>{error?.services[0]}</p>
+            </div>
+           <div>
+           <select name="location" value={data.location} onChange={handleChange} placeholder='Select Location' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
                 <option value="" >Select Location</option>
                 {
                   location.map((item,index)=>(
@@ -82,7 +90,10 @@ const LandingSlide = () => {
                   ))
                 }
             </select>
-            <select name="destination" value={data.destination} onChange={handleChange} placeholder='Select Destination' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
+            <p className='text-red-500 pl-3 h-3 text-xs'>{error?.location[0]}</p>
+           </div>
+           <div>
+           <select name="destination" value={data.destination} onChange={handleChange} placeholder='Select Destination' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
                 <option value="" >Select Destination</option>
                 {
                   location.map((item,index)=>(
@@ -90,10 +101,20 @@ const LandingSlide = () => {
                   ))
                 }
             </select>
-            <input type="email" name="email" value={data.email} onChange={handleChange} placeholder='Email' className=' text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' />
-            <input type="text" name="contact_number" value={data.contact_number} onChange={handleChange} placeholder='Contact Number' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' />
-            {/* <input type="datetime-local" name="date" value={data.date} onChange={handleChange} placeholder='Select Location' className='text-lg border border-orange-300 w-full h-14 sm:h-14 md:h-10 pl-4 outline-none rounded-md' /> */}
-            <DateTimePicker id="book_date"  format="yyyy-MM-dd hh:mm a" autoFocus={false} disableClock={true} className="text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md" value={data.book_date} onChange={handleDateChange} />
+           <p className='text-red-500 pl-3 h-3 text-xs'>{error?.destination[0]}</p>
+           </div>
+           <div>
+           <input type="email" name="email" value={data.email} onChange={handleChange} placeholder='Email' className=' text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' />
+           <p className='text-red-500 pl-3 h-3 text-xs'>{error?.email[0]}</p>
+           </div>
+           <div>
+           <input type="text" name="contact_number" value={data.contact_number} onChange={handleChange} placeholder='Contact Number' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' />
+           <p className='text-red-500 pl-3 h-3 text-xs'>{error?.contact_number[0]}</p>
+           </div>
+           <div>
+           <DateTimePicker id="book_date"  format="yyyy-MM-dd hh:mm a" autoFocus={false} disableClock={true} className="text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md" value={data.book_date} onChange={handleDateChange} />
+         {/* <p className='text-red-500 pl-3 text-xs'>error</p> */}
+           </div>
             <button disabled={isLoading} className='capitalize text-xl sm:text-2xl md:text-xl text-white bg-orange-400 w-48 px-3 py-2 rounded-md flex items-center justify-center mx-auto gap-2 disabled:bg-gray-400 '>{isLoading && <CgSpinner size={20} className="animate-spin"/>}get new quote</button>
         </form>
       </div>

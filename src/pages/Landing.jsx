@@ -11,23 +11,23 @@ import LandingSliderButtons from '../components/LandingSliderButtons';
 const Landing = () => {
   return (
    <div className='h-fit mb-5 sm:mb-0   pb-5 sm:h-fit  md:h-fit w-full'>
-   <Swiper
+   {/* <Swiper
     modules={[Autoplay]}
     spaceBetween={50}
     slidesPerView={1}
     loop
     autoplay={
      { delay: 2500}
-    }>
-   {
-    [1,2,3].map((index)=>(
-      <SwiperSlide key={index}>
+    }> */}
+   {/* { */}
+    {/* [1,2,3].map((index)=>(
+      <SwiperSlide key={index}> */}
       <LandingSlide />
-    </SwiperSlide>
-    ))
-   }
-  <LandingSliderButtons/>
-   </Swiper>
+    {/* </SwiperSlide> */}
+    {/* )) */}
+   {/* } */}
+  {/* <LandingSliderButtons/> */}
+   {/* </Swiper> */}
    </div>
   )
 }
