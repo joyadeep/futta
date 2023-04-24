@@ -22,9 +22,9 @@ const LandingSlide = () => {
   const swiper=useSwiper()
   const [timedate,setTimedate]=useState(new Date());
   const [data,setData]=useState({location:'',destination:'',email:'',contact_number:'',book_date:new Date()})
-  const [error,setError]=useState(null);  
+  const [error,setError]=useState(' ');  
     const handleChange=(e)=>{
-      swiper.autoplay.stop()
+      // swiper.autoplay.stop()
         setData({...data,[e.target.name]:e.target.value})
     }
     const handleDateChange=(book_date)=>{
@@ -41,6 +41,7 @@ const LandingSlide = () => {
         getQuote(newData).then((res)=>{
           if (res.status===200){
             setData({services:"",location:'',destination:'',email:'',contact_number:'',book_date:new Date()})
+            setError('')
             toast.success("Transport quote created !")
           }
           else if (res.status===202){
@@ -49,7 +50,7 @@ const LandingSlide = () => {
           }
         }).finally(()=>{
           setIsLoading(false);
-          swiper.autoplay.start()
+          // swiper.autoplay.start()
         })
         // onsuccess swipter autoplay start | clear form | toast message
     }
@@ -79,7 +80,7 @@ const LandingSlide = () => {
                 <option value="van with driver" >Van with driver</option>
                 <option value="complete moving" >Complete Moving</option>
             </select>
-            <p className='text-red-500 pl-3 h-3 text-xs'>{error?.services[0]}</p>
+            <p className='text-red-500 pl-3 h-3 text-xs'>{error.services && error?.services[0]}</p>
             </div>
            <div>
            <select name="location" value={data.location} onChange={handleChange} placeholder='Select Location' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
@@ -90,7 +91,7 @@ const LandingSlide = () => {
                   ))
                 }
             </select>
-            <p className='text-red-500 pl-3 h-3 text-xs'>{error?.location[0]}</p>
+            <p className='text-red-500 pl-3 h-3 text-xs'>{error.location && error?.location[0]}</p>
            </div>
            <div>
            <select name="destination" value={data.destination} onChange={handleChange} placeholder='Select Destination' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
@@ -101,15 +102,15 @@ const LandingSlide = () => {
                   ))
                 }
             </select>
-           <p className='text-red-500 pl-3 h-3 text-xs'>{error?.destination[0]}</p>
+           <p className='text-red-500 pl-3 h-3 text-xs'>{error.destination && error?.destination[0]}</p>
            </div>
            <div>
            <input type="email" name="email" value={data.email} onChange={handleChange} placeholder='Email' className=' text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' />
-           <p className='text-red-500 pl-3 h-3 text-xs'>{error?.email[0]}</p>
+           <p className='text-red-500 pl-3 h-3 text-xs'>{error.email && error?.email[0]}</p>
            </div>
            <div>
            <input type="text" name="contact_number" value={data.contact_number} onChange={handleChange} placeholder='Contact Number' className='text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' />
-           <p className='text-red-500 pl-3 h-3 text-xs'>{error?.contact_number[0]}</p>
+           <p className='text-red-500 pl-3 h-3 text-xs'>{error.contact_number && error?.contact_number[0]}</p>
            </div>
            <div>
            <DateTimePicker id="book_date"  format="yyyy-MM-dd hh:mm a" autoFocus={false} disableClock={true} className="text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md" value={data.book_date} onChange={handleDateChange} />
