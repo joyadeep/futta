@@ -74,9 +74,9 @@ const LandingSlide = () => {
             <select name="services" value={data.service} onChange={handleChange} placeholder='Select Service' className=' text-lg border border-orange-300 w-full h-10 sm:h-14 md:h-10 pl-4 outline-none rounded-md' >
                 <option value="" >Select Service</option>
                 <option value="van rental" >Van Rental</option>
-                <option value="trailor" >Trailor</option>
-                <option value="van + trailor" >Van + Trailor</option>
-                <option value="van + trailor with driver" >Van + Trailor with driver</option>
+                <option value="trailor" >Trailer</option>
+                <option value="van + trailor" >Van + Trailer</option>
+                <option value="van + trailor with driver" >Van + Trailer with driver</option>
                 <option value="van with driver" >Van with driver</option>
                 <option value="complete moving" >Complete Moving</option>
             </select>
