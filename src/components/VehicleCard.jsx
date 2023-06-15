@@ -1,5 +1,5 @@
 import React from 'react'
-import van from '../assets/images/futtavan.png'
+import van from '../assets/images/futtavans.png'
 
 const VehicleCard = () => {
   return (

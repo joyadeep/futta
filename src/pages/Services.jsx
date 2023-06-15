@@ -42,7 +42,7 @@ const data=[
 const Services = () => {
   return (
     <div className='h-fit sm:h-fit md:h-screen py-3 sm:py-3 md:py-0 w-full bg-gray-100 flex flex-col items-center justify-evenly sm:justify-evenly md:justify-center gap-3 px-2 sm:px-2 md:px-10'>
-        <p className='text-orange-400 text-5xl sm:text-6xl font-bold'>We offer our costumer with the following services.</p>
+        <p className='text-orange-400 text-5xl sm:text-6xl font-bold'>We offer our custumer with the following services.</p>
         <div className='flex flex-col sm:flex-col gap-10 sm:gap-10 md:gap-0 md:flex-row justify-between w-full'>
             {
                 data.map((item)=>(

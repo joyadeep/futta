@@ -1,5 +1,5 @@
 import React from 'react'
-import trailer from '../assets/images/trailer.jpg'
+import trailer from '../assets/images/futtaTrailer.png'
 
 const TrailerCard = () => {
   return (

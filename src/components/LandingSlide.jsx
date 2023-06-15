@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import van from '../assets/images/futtavan.png'
+import van from '../assets/images/futtavans.png'
 import DateTimePicker from 'react-datetime-picker';
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
