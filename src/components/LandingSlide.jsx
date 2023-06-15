@@ -61,7 +61,7 @@ const LandingSlide = () => {
       objectFit: 'contain',
     };
   return (
-    <div className=' h-fit pb-5 flex flex-col sm:flex-col md:flex-row px-3 sm:px-3 md:px-20'>
+    <div className=' h-fit pb-5 flex flex-col sm:flex-col md:flex-row px-3 sm:px-3 md:px-20' style={{ backgroundColor: 'lavender' }}>
       
     <div className=' w-full sm:w-full  md:w-2/5 flex flex-col gap-3 sm:gap-3 md:gap-10'>
         <p className='w-3/4 text-5xl sm:text-5xl md:text-6xl font-bold text-orange-400'>Moving & Vehicle Rentals</p>

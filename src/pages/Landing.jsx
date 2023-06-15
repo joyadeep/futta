@@ -10,7 +10,7 @@ import LandingSliderButtons from '../components/LandingSliderButtons';
 
 const Landing = () => {
   return (
-   <div className='h-fit mb-5 sm:mb-0   pb-5 sm:h-fit  md:h-fit w-full'>
+   <div className='h-fit mb-5 sm:mb-0   pb-5 sm:h-fit  md:h-fit w-full' style={{ backgroundColor: 'lavender' }}>
    {/* <Swiper
     modules={[Autoplay]}
     spaceBetween={50}
