@@ -54,6 +54,12 @@ const LandingSlide = () => {
         })
         // onsuccess swipter autoplay start | clear form | toast message
     }
+    const imageStyles = {
+      maxWidth: '100%',
+      height: '100%',
+      width: '100%',
+      objectFit: 'contain',
+    };
   return (
     <div className=' h-fit pb-5 flex flex-col sm:flex-col md:flex-row px-3 sm:px-3 md:px-20'>
       
@@ -64,7 +70,6 @@ const LandingSlide = () => {
     </div>
     <div className='w-full  sm:w-full md:w-3/5  flex '>
       <div className='hidden sm:hidden md:block md:w-1/2 pt-20 px-4'>
-        <img src={van} />
       </div>
       <div className='w-full sm:w-full md:w-1/2 pt-5 sm:pt-5 md:pt-0'>
         <p className='text-lg'>Professional Services</p>
@@ -119,6 +124,7 @@ const LandingSlide = () => {
             <button disabled={isLoading} className='capitalize text-xl sm:text-2xl md:text-xl text-white bg-orange-400 w-48 px-3 py-2 rounded-md flex items-center justify-center mx-auto gap-2 disabled:bg-gray-400 '>{isLoading && <CgSpinner size={20} className="animate-spin"/>}get new quote</button>
         </form>
       </div>
+     
     </div>
   </div>
   )

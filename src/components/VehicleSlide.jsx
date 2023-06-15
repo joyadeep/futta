@@ -8,8 +8,6 @@ const VehicleSlide = () => {
        <div className='flex flex-col sm:flex-col md:flex-row justify-between gap-4 mb-5'>
        <TrailerCard/>
        <VehicleCard/>
-       <TrailerCard/>
-       <VehicleCard/>
 
 
        </div>

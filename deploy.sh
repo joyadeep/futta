@@ -1,4 +1,5 @@
 echo "build"
+npm run build
 
 
 echo "Deploy files to server"

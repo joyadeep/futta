@@ -107,7 +107,6 @@ const RequestCall = () => {
           </button>
         </form>
         <img
-          src={van}
           className="hidden sm:hidden md:block w-3/5 object-contain pl-5"
         />
       </div>
