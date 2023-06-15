@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import van from "../assets/images/futtavan.png";
+import van from "../assets/images/futtavans.png";
 import { requestCall } from "../helper/customerHelper";
 import { CgSpinner } from "react-icons/cg";
 const RequestCall = () => {
@@ -107,6 +107,7 @@ const RequestCall = () => {
           </button>
         </form>
         <img
+          src={van}
           className="hidden sm:hidden md:block w-3/5 object-contain pl-5"
         />
       </div>
